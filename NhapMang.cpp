@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void nhap(int rows, int cols, int matrix[][1001]) {
+void nhap(int rows, int cols, float matrix[][101]) {
   cout << "Nhap cac hang so: " << endl;
   for (int i = 0; i < rows; i++) {
     for (int j = 0; j < cols; j++) {
@@ -11,7 +11,7 @@ void nhap(int rows, int cols, int matrix[][1001]) {
   }
 }
 
-void swapRow(arr[][1001], n, row1, ro22) {
+void swapRow(arr[][101], n, row1, ro22) {
 	for(int j = 0; j <= n; j++) {
 		tg = a[row1][j];
 		a[row1][j] = a[row2][j];
@@ -19,7 +19,7 @@ void swapRow(arr[][1001], n, row1, ro22) {
 	}
 }
 
-void gauss(int matrix[][1001], int n)
+void gauss(float matrix[][101], int n)
 {
   for (int i = 1; i < n; i++) {
     if (matrix[i][i] == 0) {
@@ -37,10 +37,26 @@ void gauss(int matrix[][1001], int n)
   }
 }
 
+void giaiNghiem(float matrix[][101], int n) {
+//	float s;
+//	for(int i = n; i > 0; i--) {
+//		s = 0;
+//		for(int j = i + 1; j <= n; j++) {
+//			s = s + a[i][j]*x[]
+//		} 
+//	}
+}
+
+
+
 int main() {
   cout << "Nhap so an: " << endl;
   int n;
   cin >> n;
-  int matrix[1001][1001];
+  int nghiem[101];
+  float matrix[101][101];
   nhap(n, n + 1, matrix);
+  gauss(matrix, n);
+  giaiNghiem(matrix, n);
+  
 }
