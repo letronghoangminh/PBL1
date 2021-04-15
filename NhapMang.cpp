@@ -13,9 +13,9 @@ void nhap(int rows, int cols, float matrix[][101]) {
 
 void swapRow(arr[][101], n, row1, ro22) {
 	for(int j = 0; j <= n; j++) {
-		tg = a[row1][j];
+		temp = a[row1][j];
 		a[row1][j] = a[row2][j];
-		a[row2][j] = tg;
+		a[row2][j] = temp;
 	}
 }
 
