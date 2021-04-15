@@ -14,16 +14,26 @@ void nhap(int rows, int cols, int matrix[][1001])
   }
 }
 
-void xuat(int rows, int cols, int matrix[][1001])
+void gauss(int matrix[][1001], int n)
 {
-  cout << "Cac hang so la: " << endl;
-  for (int i = 0; i < rows; i++)
+  for (int i = 1; i < n; i++)
   {
-    for (int j = 0; j < cols; j++)
+    if (matrix[i][i] == 0)
     {
-      cout << matrix[i][j] << " ";
+      for (int j = i + 1; j <= n; j++)
+      {
+        if (matrix[j][i] != 0)
+        {
+          //doidong(matrix, n, i, j);
+          break;
+        }
+        if (j > n)
+        {
+          cout << "HPT vo so nghiem";
+          return;
+        }
+      }
     }
-    cout << endl;
   }
 }
 
@@ -34,5 +44,4 @@ int main()
   cin >> n;
   int matrix[1001][1001];
   nhap(n, n + 1, matrix);
-  xuat(n, n + 1, matrix);
 }
