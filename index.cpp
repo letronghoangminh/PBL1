@@ -36,12 +36,18 @@ void index() {
 }
 
 int main() {
+	int n;
+	cout << "Nhap bac cua he phuong trinh: " << endl;
+	cin >> n;
+	double arr[200][200]; 
+	cout << "Nhap cac he so: " << endl;
+	arrayInput(arr, n, n + 1);
 	while(selection != "3") {
 		index();
 		
 		if(selection == "1"){
 			system("CLS");
-			doGaussMethod();
+			doGaussMethod(arr, n);
 		}
 		
 		if(selection == "2"){
