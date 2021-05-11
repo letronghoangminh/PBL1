@@ -9,8 +9,8 @@ using namespace std;
 */
 
 void arrayInput(double arr[][200], int h, int w) {
-	for(int i = 1; i <= h; i++) {
-		for(int j = i; j <= w; j++) {
+	for(int i = 0; i < h; i++) {
+		for(int j = 0; j < w; j++) {
 			cin >> arr[i][j];
 		}
 	}
@@ -19,7 +19,7 @@ void arrayInput(double arr[][200], int h, int w) {
 void arrayOutput(double arr[][200], int h, int w) {
 	for(int i = 0; i < h; i++) {
 		for(int j = 0; j < w; j++) {
-			cout << arr[i][j];
+			cout << arr[i][j] << " ";
 		}
 	}
 }
