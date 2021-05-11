@@ -9,12 +9,18 @@
 //Declaring utilities functions
 void permutateTriangle(double ex[], int n, double arr[][200]);
 void findReverseEx(double ex[], int n, double arr[][200]);
-
+int checkEx(double ex[], int n);
+// double calculateDet(double arr[][200], int n);
 
 //main functions
 void doKrameMethod(double arr[][200], int n) {
 	cout << "...doing krame method...";
-	
+	// double det = calculateDet(arr, n);
+	if (n == 0) {
+
+	} else {
+
+	}
 	cout << endl;
 	// system("pause");
 }
@@ -25,17 +31,24 @@ void doGaussMethod(double arr[][200], int n){
 	double ex[n]; //experiences array
 	permutateTriangle(ex, n, arr);
 	findReverseEx(ex, n, arr);
+	int situation = checkEx(ex, n);
 
+	if (situation == 2){
 	//Printing experience
-	for (int i = 0; i < n; i++) {
-		cout << "Nghiem thu " << i + 1 << " la " << ex[i] << endl;
+		for (int i = 0; i < n; i++) {
+			cout << "Nghiem thu " << i + 1 << " la ";
+			printf("%.3lf", ex[i]);
+			cout << endl;
+		}
+	} else if (situation == 1) {
+		cout << "Phuong trinh vo so nghiem" << endl;
+	} else {
+		cout << "Phuong trinh vo nghiem" << endl;
 	}
-
 	cout << endl << endl;
 	cout << "...Stop gauss method..." << endl << endl << endl;
-
-
 	// system("pause");
+
 }
 
 //main functions
@@ -80,5 +93,16 @@ void findReverseEx(double ex[], int n, double arr[][200]) {
 	}
 }
 
+int checkEx(double ex[], int n) {
+	for (int i = 0; i < n; i++) {
+		if (ex[i] == INFINITY || ex[i] == -INFINITY) {
+			return 0;
+		}
+		if (isnan(ex[i])) {
+			return 1;
+		}
+	}
+	return 2;
+}
 //Utilities functions
 
