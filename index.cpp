@@ -11,7 +11,7 @@ int isSelected = 0;
 void index() {
 	
 	// Menu initalizing
-	system("CLS"); 
+	// system("clear"); 
 	cout	<< "******************************************" << endl
 			<< "*                                        *" << endl
 			<< "*     Giai he phuong trinh tuyen tinh    *" << endl
@@ -46,13 +46,13 @@ int main() {
 		index();
 		
 		if(selection == "1"){
-			system("CLS");
+			// system("CLS");
 			doGaussMethod(arr, n);
 		}
 		
 		if(selection == "2"){
-			system("CLS");
-			doKrameMethod();
+			// system("CLS");
+			doKrameMethod(arr, n);
 		}
 			
 	}
