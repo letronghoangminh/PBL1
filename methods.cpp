@@ -12,7 +12,6 @@ void findReverseEx(double ex[], int n, double arr[][200]);
 int checkEx(double ex[], int n);
 
 
-
 //main functions
 void doKrameMethod(double arr[][200], int n, double ex[]) {
 	
@@ -22,9 +21,7 @@ int doGaussMethod(double arr[][200], int n, double ex[]){
 	permutateTriangle(ex, n, arr);
 	findReverseEx(ex, n, arr);
 	int situation = checkEx(ex, n);
-
 	return situation;
-
 }
 
 //main functions

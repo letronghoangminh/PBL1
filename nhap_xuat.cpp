@@ -1,6 +1,7 @@
 #pragma once
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 string selectionInput = "0";
@@ -57,10 +58,22 @@ void doConsoleInput(double arr[][200], int soAn) {
 	}
 }
 
-void doConsoleOutput(double ex[], int soAn) {
-	cout << "\nCac an cua he phuong trinh la:\n";
-	for(int i = 0; i < soAn; i++) {
-		cout << ex[i] << " ";
+void doConsoleOutput(double ex[], int soAn, int situation) {
+	
+	if(situation == 1) {
+		cout << "\n==>He phuong trinh vo so nghiem";
 	}
-	cout << endl;
+	
+	if(situation == 2) {
+		cout << "\n==>Cac an cua he phuong trinh la:\n";
+		for(int i = 0; i < soAn; i++) {
+			cout << setprecision(3) << ex[i] <<  " ";
+		}	
+	}
+	
+	if(situation == 3) {
+		cout << "\n==>He phuong trinh vo nghiem";
+	}
+	
+	cout << endl << endl;
 }

@@ -14,6 +14,8 @@ double ex[ARR_SIZE];
 string selection = "0";
 int isSelected = 0;
 
+int situation;
+
 
 void index() {
 	// Menu initalizing
@@ -63,12 +65,10 @@ int main() {
 		
 		//Da nhap input, tien hanh giai he phuong trinh
 		if(selection == "1"){
-			system("CLS");
-			int situation = doGaussMethod(arrHeSo, soAn, ex);
+			situation = doGaussMethod(arrHeSo, soAn, ex);
 		}
 		
 		if(selection == "2"){
-			system("CLS");
 			doKrameMethod(arrHeSo, soAn, ex);
 		}
 
@@ -76,7 +76,7 @@ int main() {
     // 0 la vo nghiem, em nhan xu ly doan nay di
 
 		//Giai xong he phuong trinh, tien hanh xuat nghiem ra man hinh (xuat ex[])
-		doConsoleOutput(ex, soAn);
+		doConsoleOutput(ex, soAn, situation);
 		system("pause");
 	}
 	return 0;
