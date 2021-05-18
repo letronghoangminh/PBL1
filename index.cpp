@@ -17,21 +17,21 @@ int inputSuccess = 1;
 void index() {
 	// Menu initalizing
 	system("CLS"); 
-	cout	<< "                     ******************************************" << endl
-			<< "                     *                                        *" << endl
-			<< "                     *     Giai he phuong trinh tuyen tinh    *" << endl
-			<< "                     *                                        *" << endl
-			<< "                     *         1. Phuong phap Gauss           *" << endl
-			<< "                     *         2. Phuong phap Krame           *" << endl
-			<< "                     *         3. Thoat                       *" << endl
-			<< "                     *                                        *" << endl
-			<< "                     ******************************************" << endl
+	cout	<< "******************************************" << endl
+			<< "*                                        *" << endl
+			<< "*     Giai he phuong trinh tuyen tinh    *" << endl
+			<< "*                                        *" << endl
+			<< "*         1. Phuong phap Gauss           *" << endl
+			<< "*         2. Phuong phap Krame           *" << endl
+			<< "*         3. Thoat                       *" << endl
+			<< "*                                        *" << endl
+			<< "******************************************" << endl
 			<< endl;
 	
 	//Selection Validation
 	do {
 		isSelected = 0;
-		cout << "                     ====> Nhap lua chon cua ban: ";
+		cout << "====> Nhap lua chon cua ban: ";
 		cin >> selection;
 		
 		if(selection == "1" || selection == "2" || selection == "3")
@@ -48,18 +48,17 @@ int main() {
 		if(selection == "3") return 0;
 		
 		/* Da chon phuong thuc giai, tien hanh nhap input
-		 * Input bao gom so an cua he phuong trinh (variableNumber) va bang he so cua he phuong trinh (arr)
-		 *
+		 * Input bao gom so an cua he phuong trinh (soAn) va cac he so cua he phuong trinh (arr)
 		 */
 		inputMenu();
 		if(selectionInput == "1") {
-			cout << "                    Nhap so an: ";
+			cout << "Nhap so an: ";
 			cin >> soAn;
-			cout << "                    Nhap cac he so:\n";
+			cout << "Nhap cac he so:\n";
 			doConsoleInput(arrHeSo, soAn);
 		}
 		else if(selectionInput == "2") {
-			doFileInput(arrHeSo, &soAn, &inputSuccess);
+			doFileInput(arrHeSo, "input.txt", &soAn, &inputSuccess);
 			if(!inputSuccess) goto cant_open_file;
 		}
 		
@@ -80,7 +79,6 @@ int main() {
 		
 		cant_open_file:; //neu khong the mo file de input thi chuong trinh se nhay den doan nay
 		
-		cout << "                    ";
 		system("pause");
 	}
 	return 0;
