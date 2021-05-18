@@ -43,7 +43,9 @@ void index() {
 int main() {
 	
 	while(selection != "3") {
-		
+		for(int i = 0; i < 200; i++) {
+			ex[i] = 0;
+		}	
 		index();
 		if(selection == "3") return 0;
 		
@@ -58,7 +60,10 @@ int main() {
 			doConsoleInput(arrHeSo, soAn);
 		}
 		else if(selectionInput == "2") {
-			doFileInput(arrHeSo, "file_input.txt", &soAn, &inputSuccess);
+			string fileName;
+			cout << "Nhap ten file: "; 
+			cin >> fileName;
+			doFileInput(arrHeSo, fileName, &soAn, &inputSuccess);
 			if(!inputSuccess) goto cant_open_file;
 		}
 		
