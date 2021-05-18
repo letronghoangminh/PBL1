@@ -58,7 +58,7 @@ int main() {
 			doConsoleInput(arrHeSo, soAn);
 		}
 		else if(selectionInput == "2") {
-			doFileInput(arrHeSo, "input.txt", &soAn, &inputSuccess);
+			doFileInput(arrHeSo, "file_input.txt", &soAn, &inputSuccess);
 			if(!inputSuccess) goto cant_open_file;
 		}
 		
