@@ -7,25 +7,29 @@
  */
 
 //Declaring utilities functions
-void permutateTriangle(double ex[], int n, double arr[][200]);
-void findReverseEx(double ex[], int n, double arr[][200]);
+void findReverseExGauss(double ex[], int n, double arr[][200]);
+double calcDetKrame(double arr[][200], int n);
+void checkDetKrame(double det, int n, double arr[][200]);
+void permutateTriangle(int n, double arr[][200]);
 int checkEx(double ex[], int n);
 
 
 //main functions
 void doKrameMethod(double arr[][200], int n, double ex[]) {
-	
+	permutateTriangle(n, arr);
+	double det = calcDetKrame(arr, n);
+	checkDetKrame(det, n, arr);
 }
 
 void doGaussMethod(double arr[][200], int n, double ex[]){
-	permutateTriangle(ex, n, arr);
-	findReverseEx(ex, n, arr);
+	permutateTriangle(n, arr);
+	findReverseExGauss(ex, n, arr);
 }
 
 //main functions
 
 //Utilities function
-void permutateTriangle(double ex[], int n, double arr[][200]) {
+void permutateTriangle(int n, double arr[][200]) {
 	for (int i = 0; i < n - 1; i++) {
 		if (abs(arr[i][i]) < 0.001) {
 			for (int j = i + 1; j < n; j++) {
@@ -54,7 +58,7 @@ void permutateTriangle(double ex[], int n, double arr[][200]) {
 	}
 }
 
-void findReverseEx(double ex[], int n, double arr[][200]) {
+void findReverseExGauss(double ex[], int n, double arr[][200]) {
 	for (int i = n - 1; i >= 0; i--) {
 		double s = arr[i][n];
 		for (int k = i + 1; k < n; k++) {
@@ -74,5 +78,23 @@ int checkEx(double ex[], int n) {
 		}
 	}
 	return 2;
+}
+
+double calcDetKrame(double arr[][200], int n) {
+	double det = 1;
+	for (int i = 0; i < n; i++) {
+		det *= arr[i][i];
+	}
+	return det;
+}
+//TODO check det
+//TODO fill arr with each situation
+//TODO create function to calc ex if det != 0
+void checkDetKrame(double det, int n, double arr[][200]) {
+	if (det == 0) {
+		
+	} else {
+
+	}
 }
 //Utilities functions
