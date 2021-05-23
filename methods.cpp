@@ -38,6 +38,7 @@ void permutateTriangle(int n, double arr[][200], double resultArr[][200]) {
 			resultArr[i][j] = arr[i][j];
 		}
 	}
+
 	for (int i = 0; i < n - 1; i++) {
 		if (abs(resultArr[i][i]) < 0.001) {
 			for (int j = i + 1; j < n; j++) {
@@ -51,8 +52,10 @@ void permutateTriangle(int n, double arr[][200], double resultArr[][200]) {
 				break;
 			}
 		}
+
 		for (int j = i + 1; j < n; j++) {
 			double m = - (resultArr[j][i] / resultArr	[i][i]);
+			
 			for (int k = i; k < n + 1; k++) {
 				resultArr[j][k] += resultArr[i][k] * m;
 			}
@@ -69,9 +72,11 @@ void permutateTriangle(int n, double arr[][200], double resultArr[][200]) {
 void findReverseExGauss(double ex[], int n, double arr[][200]) {
 	for (int i = n - 1; i >= 0; i--) {
 		double s = arr[i][n];
+
 		for (int k = i + 1; k < n; k++) {
 			s -= arr[i][k] * ex[k];
 		}
+
 		ex[i] = s / arr[i][i];
 	}
 }
@@ -85,14 +90,17 @@ int checkEx(double ex[], int n) {
 			return 1;
 		}
 	}
+
 	return 2;
 }
 
 double calcDetKrame(double arr[][200], int n) {
 	double det = 1;
+
 	for (int i = 0; i < n; i++) {
 		det *= arr[i][i];
 	}
+
 	return det;
 }
 
@@ -106,6 +114,7 @@ void checkDetKrame(double ex[], double det, int n, double arr[][200]) {
 				return;
 			}
 		}
+
 		ex[0] = NAN;
 	} else {
 		calcExKrame(ex, arr, det, n);	
@@ -115,16 +124,19 @@ void checkDetKrame(double ex[], double det, int n, double arr[][200]) {
 void calcExKrame(double ex[], double arr[][200], double det, int n) {
 	for (int i = 0; i < n; i++) {
 		double tempArr[200][200];
+
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n + 1; j++) {
 				tempArr[i][j] = arr[i][j];
 			}
 		}
+
 		for (int j = 0; j < n; j++) {
 			double temp = tempArr[j][i];
 			tempArr[j][i] = tempArr[j][n];
 			tempArr[j][n] = temp;
 		}
+
 		permutateTriangle(n, tempArr, tempArr);
 		double detI = calcDetKrame(tempArr, n);
 		ex[i] = detI / det;
