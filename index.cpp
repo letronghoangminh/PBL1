@@ -5,9 +5,9 @@
 
 using namespace std;
 
-int soAn = 0;	
-double arrHeSo[ARR_SIZE][ARR_SIZE];
-double ex[ARR_SIZE];
+int so_an = 0;	
+double arr_heso[ARR_SIZE][ARR_SIZE]; //Mang chua he so
+double ex[ARR_SIZE]; //Mang chua nghiem
 
 string selection = "0";
 int isSelected = 0;
@@ -15,20 +15,20 @@ int situation;
 int inputSuccess = 1;
 
 void index() {
-	// Menu initalizing
+	// Menu
 	system("CLS"); 
-	cout	<< "******************************************" << endl
-			<< "*                                        *" << endl
-			<< "*     Giai he phuong trinh tuyen tinh    *" << endl
-			<< "*                                        *" << endl
-			<< "*         1. Phuong phap Gauss           *" << endl
-			<< "*         2. Phuong phap Krame           *" << endl
-			<< "*         3. Thoat                       *" << endl
-			<< "*                                        *" << endl
-			<< "******************************************" << endl
+	cout	<< "+----------------------------------------+" << endl
+			<< "|     Giai he phuong trinh tuyen tinh    |" << endl
+			<< "+----------------------------------------+" << endl
+			<< "|                                        |" << endl
+			<< "|         1. Phuong phap Gauss           |" << endl
+			<< "|         2. Phuong phap Krame           |" << endl
+			<< "|         3. Thoat                       |" << endl
+			<< "|                                        |" << endl
+			<< "+----------------------------------------+" << endl
 			<< endl;
 	
-	//Selection Validation
+	//Validate lua chon 
 	do {
 		isSelected = 0;
 		cout << "====> Nhap lua chon cua ban: ";
@@ -50,37 +50,37 @@ int main() {
 		if(selection == "3") return 0;
 		
 		/* Da chon phuong thuc giai, tien hanh nhap input
-		 * Input bao gom so an cua he phuong trinh (soAn) va cac he so cua he phuong trinh (arr)
+		 * Input bao gom so an cua he phuong trinh (so_an) va cac he so cua he phuong trinh (arr)
 		 */
 		inputMenu();
 		if(selectionInput == "1") {
 			cout << "Nhap so an: ";
-			cin >> soAn;
+			cin >> so_an;
 			cout << "Nhap cac he so:\n";
-			doConsoleInput(arrHeSo, soAn);
+			doConsoleInput(arr_heso, so_an);
 		}
 		else if(selectionInput == "2") {
 			string fileName;
 			cout << "Nhap ten file: "; 
 			cin >> fileName;
-			doFileInput(arrHeSo, fileName, &soAn, &inputSuccess);
+			doFileInput(arr_heso, fileName, &so_an, &inputSuccess);
 			if(!inputSuccess) goto cant_open_file;
 		}
 		
 		//Da nhap input, tien hanh giai he phuong trinh
 		if(selection == "1") {
-			doGaussMethod(arrHeSo, soAn, ex);
+			doGaussMethod(arr_heso, so_an, ex);
 		}
 		
 		if(selection == "2") {
-			doKrameMethod(arrHeSo, soAn, ex);
+			doKrameMethod(arr_heso, so_an, ex);
 		}
 
     	// bien situation luu 3 gia tri: 2 la co nghiem, 1 la vo so nghiem, 0 la vo nghiem
-    	situation = checkEx(ex, soAn);
+    	situation = checkEx(ex, so_an);
     	
 		//Giai xong he phuong trinh, tien hanh xuat nghiem ra man hinh (xuat ex[])
-		doConsoleOutput(ex, soAn, situation);
+		doConsoleOutput(ex, so_an, situation);
 		
 		cant_open_file:; //neu khong the mo file de input thi chuong trinh se nhay den doan nay
 		

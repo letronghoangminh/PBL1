@@ -11,14 +11,14 @@ int isSelected2 = 0;
 
 void inputMenu() {
 	system("CLS"); 
-	cout	<< "******************************************" << endl
-			<< "*                                    	 *" << endl
-			<< "*               Nhap du lieu             *" << endl
-			<< "*                                        *" << endl
-			<< "*             1. Nhap thu cong           *" << endl
-			<< "*             2. Doc tu file             *" << endl
-			<< "*                                        *" << endl
-			<< "******************************************" << endl
+	cout	<< "+----------------------------------------+" << endl
+			<< "|               Nhap du lieu             |" << endl
+			<< "+----------------------------------------+" << endl
+			<< "|                                        |" << endl
+			<< "|             1. Nhap thu cong           |" << endl
+			<< "|             2. Doc tu file             |" << endl
+			<< "|                                        |" << endl
+			<< "+----------------------------------------+" << endl
 			<< endl;
 	
 	//Selection Validation
@@ -31,16 +31,16 @@ void inputMenu() {
 	} while(!isSelected2);
 }
 
-void doFileInput(double arr[][ARR_SIZE], string fileName, int *soAn, int *success) {
+void doFileInput(double arr[][ARR_SIZE], string fileName, int *so_an, int *success) {
 	
 	
 	ifstream infile;
 	infile.open(fileName.c_str());
 	
 	if( infile.is_open() ) {
-		infile >> *soAn; 
+		infile >> *so_an; 
 		int n;
-		n = *soAn;
+		n = *so_an;
 		
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < n+1; j++) {
@@ -57,10 +57,10 @@ void doFileInput(double arr[][ARR_SIZE], string fileName, int *soAn, int *succes
 }
 
 
-void doConsoleInput(double arr[][ARR_SIZE], int soAn) {
+void doConsoleInput(double arr[][ARR_SIZE], int so_an) {
 	
-	int h = soAn;
-	int w = soAn + 1;
+	int h = so_an;
+	int w = so_an + 1;
 	
 	for(int i = 0; i < h; i++) {
 		for(int j = 0; j < w; j++) {
@@ -69,17 +69,21 @@ void doConsoleInput(double arr[][ARR_SIZE], int soAn) {
 	}
 }
 
-void doConsoleOutput(double ex[], int soAn, int situation) {
+void doConsoleOutput(double ex[], int so_an, int situation) {
 	
 	if(situation == 1) {
 		cout << "\n==>He phuong trinh vo so nghiem";
 	}
 	
 	if(situation == 2) {
-		cout << "\n==>Cac an cua he phuong trinh la:";
-		for(int i = 0; i < soAn; i++) {
-			cout << setprecision(4) << ex[i] <<  " ";
+		cout << "\n==>Cac an cua he phuong trinh la: " << endl;
+        printf("            +--------+------------------+\n");
+        printf("            |   STT  |      Gia tri     |\n");
+        printf("            +--------+------------------+\n");
+		for(int i = 0; i < so_an; i++) {
+            printf("            | %3d    |   %4.4f         |\n", i+1, ex[i]); 
 		}	
+        printf("            +--------+------------------+\n");
 	}
 	
 	if(situation == 0) {
