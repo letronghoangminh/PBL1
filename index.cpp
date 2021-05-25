@@ -41,12 +41,30 @@ void index() {
 
 
 int main() {
-	
+	cout	<< "+----------------------------------------------+" << endl
+			<< "|     DO AN LAP TRINH TINH TOAN  PBL1 20.16    |" << endl
+			<< "+----------------------------------------------+" << endl
+			<< "|                                              |" << endl
+			<< "|   DE TAI: GIAI HE PHUONG TRINH TUYEN TINH    |" << endl
+			<< "|       BANG PHUONG PHAP GAUSS VA KRAME        |" << endl
+			<< "|                                              |" << endl
+			<< "|            Sinh vien thuc hien:              |" << endl
+            << "|          1. Le Trong Hoang Minh              |" << endl 
+            << "|          2. Nguyen Van Hoang Nhan            |" << endl
+            << "|                                              |" << endl
+ 			<< "+----------------------------------------------+" << endl
+			<< endl << endl;
+    system("pause");
+    system("CLS");
+
 	while(selection != "3") {
-		for(int i = 0; i < 200; i++) {
+		
+        for(int i = 0; i < 200; i++) {
 			ex[i] = 0;
 		}	
+
 		index();
+
 		if(selection == "3") return 0;
 		
 		/* Da chon phuong thuc giai, tien hanh nhap input
@@ -54,14 +72,14 @@ int main() {
 		 */
 		inputMenu();
 		if(selectionInput == "1") {
-			cout << "Nhap so an: ";
+			cout << "====> Nhap so an: ";
 			cin >> so_an;
-			cout << "Nhap cac he so:\n";
+			cout << "====> Nhap cac he so:\n";
 			doConsoleInput(arr_heso, so_an);
 		}
 		else if(selectionInput == "2") {
 			string fileName;
-			cout << "Nhap ten file: "; 
+			cout << "\n====> Nhap ten file: "; 
 			cin >> fileName;
 			doFileInput(arr_heso, fileName, &so_an, &inputSuccess);
 			if(!inputSuccess) goto cant_open_file;

@@ -76,7 +76,7 @@ void doConsoleOutput(double ex[], int so_an, int situation) {
 	}
 	
 	if(situation == 2) {
-		cout << "\n==>Cac an cua he phuong trinh la: " << endl;
+		cout << "\n====>Cac an cua he phuong trinh la: " << endl;
         printf("            +--------+------------------+\n");
         printf("            |   STT  |      Gia tri     |\n");
         printf("            +--------+------------------+\n");
