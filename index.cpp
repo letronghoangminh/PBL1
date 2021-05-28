@@ -76,6 +76,8 @@ int main() {
 			cin >> so_an;
 			cout << "====> Nhap cac he so:\n";
 			doConsoleInput(arr_heso, so_an);
+            cout << "Du lieu da nhap la he phuong trinh:  " << endl;
+            printProblem(arr_heso, so_an);
 		}
 		else if(selectionInput == "2") {
 			string fileName;

@@ -64,15 +64,15 @@ void doFileInput(double arr[][ARR_SIZE], string file_name, int *so_an, int *succ
 }
 
 void printProblem(double arr[][ARR_SIZE], int so_an) {
-    cout << "+--------------------------------------------+" << endl;
+     cout << "+--------------------------------------------+" << endl;
     for(int i = 0; i < so_an; i++) {
-        cout << "            ";
         for(int j = 0; j < so_an - 1; j++) {
-            cout << arr[i][j] << "x" << j+1 << " + ";
+            printf("%7.2lfx%d + ",arr[i][j], j+1);
         }
-        cout << arr[i][so_an-1] << "x" << so_an << " = " << arr[i][so_an] << endl;
+        printf("%7.2lfx%d = %7.2lf\n", arr[i][so_an-1], so_an, arr[i][so_an]);
     }
     cout << "+--------------------------------------------+" << endl;
+
 
 }
 
