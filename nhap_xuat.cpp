@@ -31,11 +31,11 @@ void inputMenu() {
 	} while(!isSelected2);
 }
 
-void doFileInput(double arr[][ARR_SIZE], string fileName, int *so_an, int *success) {
+void doFileInput(double arr[][ARR_SIZE], string file_name, int *so_an, int *success) {
 	
 	
 	ifstream infile;
-	infile.open(fileName.c_str());
+	infile.open(file_name.c_str());
 	
 	if( infile.is_open() ) {
 		infile >> *so_an; 
@@ -56,6 +56,19 @@ void doFileInput(double arr[][ARR_SIZE], string fileName, int *so_an, int *succe
 	
 }
 
+void printProblem(double arr[][ARR_SIZE], int so_an) {
+    cout << "+--------------------------------------------+" << endl;
+    for(int i = 0; i < so_an; i++) {
+        cout << "            ";
+        for(int j = 0; j < so_an - 1; j++) {
+            cout << arr[i][j] << "x" << j+1 << " + ";
+        }
+        cout << arr[i][so_an-1] << "x" << so_an << " = " << arr[i][so_an] << endl;
+    }
+    cout << "+--------------------------------------------+" << endl;
+
+}
+
 
 void doConsoleInput(double arr[][ARR_SIZE], int so_an) {
 	
@@ -72,22 +85,22 @@ void doConsoleInput(double arr[][ARR_SIZE], int so_an) {
 void doConsoleOutput(double ex[], int so_an, int situation) {
 	
 	if(situation == 1) {
-		cout << "\n==>He phuong trinh vo so nghiem";
+		cout << "\n====> He phuong trinh vo so nghiem";
 	}
 	
 	if(situation == 2) {
-		cout << "\n====>Cac an cua he phuong trinh la: " << endl;
-        printf("            +--------+------------------+\n");
-        printf("            |   STT  |      Gia tri     |\n");
-        printf("            +--------+------------------+\n");
+		cout << "\n====> Cac an cua he phuong trinh la: " << endl;
+        printf("            +---------+--------------------+\n");
+        printf("            |   STT   |       Gia tri      |\n");
+        printf("            +---------+--------------------+\n");
 		for(int i = 0; i < so_an; i++) {
-            printf("            | %3d    |   %4.4f         |\n", i+1, ex[i]); 
+            printf("            |   x%-3d  |     %-10.3lf     |\n", i+1, ex[i]); 
 		}	
-        printf("            +--------+------------------+\n");
+        printf("            +---------+--------------------+\n");
 	}
 	
 	if(situation == 0) {
-		cout << "\n==>He phuong trinh vo nghiem";
+		cout << "\n====> He phuong trinh vo nghiem";
 	}
 	
 	cout << endl << endl;

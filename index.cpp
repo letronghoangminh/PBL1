@@ -82,7 +82,14 @@ int main() {
 			cout << "\n====> Nhap ten file: "; 
 			cin >> fileName;
 			doFileInput(arr_heso, fileName, &so_an, &inputSuccess);
-			if(!inputSuccess) goto cant_open_file;
+			
+            //truong hop mo file khong thanh cong, bo qua buoc tinh nghiem
+            if(!inputSuccess) goto cant_open_file;
+
+            //truong hop mo file thanh cong, in ra he phuong trinh 
+            system("CLS");
+            cout << "Du lieu da nhap tu file la he phuong trinh:  " << endl;
+            printProblem(arr_heso, so_an);
 		}
 		
 		//Da nhap input, tien hanh giai he phuong trinh

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <math.h>
+#include "nhap_xuat.cpp"
 
 /*
  * This file contain 2 main method that solve the problem

@@ -6,6 +6,8 @@
         "bang",
         "bao",
         "bien",
+        "bo",
+        "buoc",
         "cac",
         "cant",
         "check",
@@ -15,6 +17,7 @@
         "cin",
         "cls",
         "co",
+        "cong",
         "console",
         "cout",
         "cpp",
@@ -41,8 +44,10 @@
         "hien",
         "hinh",
         "hoang",
+        "hop",
         "i",
         "if",
+        "in",
         "include",
         "index",
         "initalizing",
@@ -81,6 +86,7 @@
         "pbl",
         "phap",
         "phuong",
+        "qua",
         "ra",
         "return",
         "se",
@@ -96,6 +102,7 @@
         "system",
         "tai",
         "ten",
+        "thanh",
         "the",
         "thi",
         "thoat",
@@ -106,6 +113,7 @@
         "tri",
         "trinh",
         "trong",
+        "truong",
         "tuyen",
         "using",
         "va",
@@ -121,6 +129,7 @@
     ],
     "files.associations": {
         "iomanip": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }
