@@ -20,13 +20,18 @@ int checkEx(double ex[], int n);
 void doKrameMethod(double arr[][200], int n, double ex[]) {
 	double resultArr[200][200];
 	permutateTriangle(n, arr, resultArr);
+	cout << "Sau khi bien doi ma tran ve ma tran tam giac: " << endl;
+	printProblem(resultArr, n);
 	double det = calcDetKrame(resultArr, n);
+	cout << "Dinh thuc cua ma tran vuong A la: " << det << endl;
 	checkDetKrame(ex, det, n, arr);
 }
 
 void doGaussMethod(double arr[][200], int n, double ex[]){
 	double resultArr[200][200];
 	permutateTriangle(n, arr, resultArr);
+	cout << "Sau khi bien doi ma tran ve ma tran tam giac: " << endl;
+	printProblem(resultArr, n);
 	findReverseExGauss(ex, n, resultArr);
 }
 
@@ -106,7 +111,6 @@ double calcDetKrame(double arr[][200], int n) {
 }
 
 
-//TODO create function to calc ex if det != 0
 void checkDetKrame(double ex[], double det, int n, double arr[][200]) {
 	if (det == 0) {
 		for (int i = 1; i < n; i++) {
@@ -126,9 +130,9 @@ void calcExKrame(double ex[], double arr[][200], double det, int n) {
 	for (int i = 0; i < n; i++) {
 		double tempArr[200][200];
 
-		for (int i = 0; i < n; i++) {
+		for (int k = 0; k < n; k++) {
 			for (int j = 0; j < n + 1; j++) {
-				tempArr[i][j] = arr[i][j];
+				tempArr[k][j] = arr[k][j];
 			}
 		}
 
@@ -137,9 +141,14 @@ void calcExKrame(double ex[], double arr[][200], double det, int n) {
 			tempArr[j][i] = tempArr[j][n];
 			tempArr[j][n] = temp;
 		}
-
+		
+		cout << "Ma tran A" << i + 1 << " la: " << endl;
+		printProblem(tempArr, n);
 		permutateTriangle(n, tempArr, tempArr);
+		cout << "Ma tran A" << i + 1 << " sau khi bien doi ve ma tran tam giac: " << endl;
+		printProblem(tempArr, n);
 		double detI = calcDetKrame(tempArr, n);
+		cout << "Dinh thuc cua ma tran vuong A" << i + 1 << ": " << detI << endl;
 		ex[i] = detI / det;
 	}
 }
