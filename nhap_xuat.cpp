@@ -9,10 +9,17 @@ const int ARR_SIZE = 200;
 string selectionInput = "0";
 int isSelected2 = 0;
 
+void inputMenu();
+void doFileInput(double arr[][ARR_SIZE], string file_name, int *so_an, int *success);
+void printProblem(double arr[][ARR_SIZE], int so_an);
+void doConsoleInput(double arr[][ARR_SIZE], int so_an);
+void doConsoleInput(double arr[][ARR_SIZE], int so_an);
+void doConsoleOutput(double ex[], int so_an, int situation);
+
 void inputMenu() {
 	system("CLS"); 
-	cout	<< "+----------------------------------------+" << endl
-			<< "|               Nhap du lieu             |" << endl
+	cout    << "+----------------------------------------+" << endl
+		    << "|               Nhap du lieu             |" << endl
 			<< "+----------------------------------------+" << endl
 			<< "|                                        |" << endl
 			<< "|             1. Nhap thu cong           |" << endl
