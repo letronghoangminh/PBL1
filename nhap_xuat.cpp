@@ -19,11 +19,11 @@ void doConsoleOutput(double ex[], int so_an, int situation);
 void inputMenu() {
 	system("CLS"); 
 	cout    << "+----------------------------------------+" << endl
-		    << "|               Nhap du lieu             |" << endl
+		    << "|               Nhập dữ liệu             |" << endl
 			<< "+----------------------------------------+" << endl
 			<< "|                                        |" << endl
-			<< "|             1. Nhap thu cong           |" << endl
-			<< "|             2. Doc tu file             |" << endl
+			<< "|             1. Nhập thủ công           |" << endl
+			<< "|             2. Đọc từ file             |" << endl
 			<< "|                                        |" << endl
 			<< "+----------------------------------------+" << endl
 			<< endl;
@@ -31,7 +31,7 @@ void inputMenu() {
 	//Selection Validation
 	isSelected2 = 0;
 	do {
-		cout << "====> Nhap lua chon cua ban: ";
+		cout << "====> Nhập lựa chọn của bạn: ";
 		cin >> selectionInput;
 		if(selectionInput == "1" || selectionInput == "2")
 			isSelected2 = 1;
@@ -57,7 +57,7 @@ void doFileInput(double arr[][ARR_SIZE], string file_name, int *so_an, int *succ
 		infile.close();
 	}
 	else {
-		cout << "Khong the mo file input!" << endl;
+		cout << "Không thể mở file!" << endl;
 		*success = 0;
 	}
 	
@@ -92,13 +92,13 @@ void doConsoleInput(double arr[][ARR_SIZE], int so_an) {
 void doConsoleOutput(double ex[], int so_an, int situation) {
 	
 	if(situation == 1) {
-		cout << "\n====> He phuong trinh vo so nghiem";
+		cout << "\n====> Hệ phương trình vô số nghiệm.";
 	}
 	
 	if(situation == 2) {
-		cout << "\n====> Cac an cua he phuong trinh la: " << endl;
+		cout << "\n====> Các ẩn của hệ phương trình là: " << endl;
         printf("            +---------+--------------------+\n");
-        printf("            |   STT   |       Gia tri      |\n");
+        printf("            |   STT   |       Giá trị      |\n");
         printf("            +---------+--------------------+\n");
 		for(int i = 0; i < so_an; i++) {
             printf("            |   x%-3d  |     %-10.3lf     |\n", i+1, ex[i]); 
@@ -107,7 +107,7 @@ void doConsoleOutput(double ex[], int so_an, int situation) {
 	}
 	
 	if(situation == 0) {
-		cout << "\n====> He phuong trinh vo nghiem";
+		cout << "\n====> Hệ phương trình vô nghiệm.";
 	}
 	
 	cout << endl << endl;

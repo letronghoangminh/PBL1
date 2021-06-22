@@ -2,6 +2,7 @@
 #include <string>
 #include "nhap_xuat.cpp"
 #include "methods.cpp"
+#include "format.cpp"
 
 using namespace std;
 
@@ -14,16 +15,32 @@ int isSelected = 0;
 int situation;
 int inputSuccess = 1;
 
+void introduce() {
+    cout	<< "+----------------------------------------------+" << endl
+			<< "|     ĐỒ ÁN LẬP TRÌNH TÍNH TOÁN  PBL1 20.16    |" << endl
+			<< "+----------------------------------------------+" << endl
+			<< "|                                              |" << endl
+			<< "|   ĐỀ TÀI: GIẢI HỆ PHƯƠNG TRÌNH TUYẾN TÍNH    |" << endl
+			<< "|         BẰNG PHƯƠNG PHÁP GAUSS/KRAME         |" << endl
+			<< "|                                              |" << endl
+			<< "|            Sinh viên thực hiện:              |" << endl
+            << "|          1. Lê Trọng Hoàng Minh              |" << endl 
+            << "|          2. Nguyễn Văn Hoàng Nhân            |" << endl
+            << "|                                              |" << endl
+ 			<< "+----------------------------------------------+" << endl
+			<< endl << endl;
+}
+
 void index() {
 	// Menu
-	system("CLS"); 
+	clrscr(); 
 	cout	<< "+----------------------------------------+" << endl
-			<< "|     Giai he phuong trinh tuyen tinh    |" << endl
+			<< "|     Giải hệ phương trình tuyến tính    |" << endl
 			<< "+----------------------------------------+" << endl
 			<< "|                                        |" << endl
-			<< "|         1. Phuong phap Gauss           |" << endl
-			<< "|         2. Phuong phap Krame           |" << endl
-			<< "|         3. Thoat                       |" << endl
+			<< "|         1. Phương pháp Gauss           |" << endl
+			<< "|         2. Phương pháp Krame           |" << endl
+			<< "|         3. Thoát                       |" << endl
 			<< "|                                        |" << endl
 			<< "+----------------------------------------+" << endl
 			<< endl;
@@ -41,21 +58,14 @@ void index() {
 
 
 int main() {
-	cout	<< "+----------------------------------------------+" << endl
-			<< "|     DO AN LAP TRINH TINH TOAN  PBL1 20.16    |" << endl
-			<< "+----------------------------------------------+" << endl
-			<< "|                                              |" << endl
-			<< "|   DE TAI: GIAI HE PHUONG TRINH TUYEN TINH    |" << endl
-			<< "|       BANG PHUONG PHAP GAUSS VA KRAME        |" << endl
-			<< "|                                              |" << endl
-			<< "|            Sinh vien thuc hien:              |" << endl
-            << "|          1. Le Trong Hoang Minh              |" << endl 
-            << "|          2. Nguyen Van Hoang Nhan            |" << endl
-            << "|                                              |" << endl
- 			<< "+----------------------------------------------+" << endl
-			<< endl << endl;
-    system("pause");
-    system("CLS");
+    SetUnicode();
+    SetColor(0, 15);
+    clrscr();
+
+    introduce();
+
+    pause();
+    clrscr();
 
 	while(selection != "3") {
 		
@@ -72,16 +82,16 @@ int main() {
 		 */
 		inputMenu();
 		if(selectionInput == "1") {
-			cout << "====> Nhap so an: ";
+			cout << "====> Nhập số ẩn: ";
 			cin >> so_an;
-			cout << "====> Nhap cac he so:\n";
+			cout << "====> Nhập các hệ số:\n";
 			doConsoleInput(arr_heso, so_an);
-            cout << "Du lieu da nhap la he phuong trinh:  " << endl;
+            cout << "Dữ liệu đã nhập là hệ phương trình:  " << endl;
             printProblem(arr_heso, so_an);
 		}
 		else if(selectionInput == "2") {
 			string fileName;
-			cout << "\n====> Nhap ten file: "; 
+			cout << "\n====> Nhập tên file: "; 
 			cin >> fileName;
 			doFileInput(arr_heso, fileName, &so_an, &inputSuccess);
 			
@@ -89,8 +99,8 @@ int main() {
             if(!inputSuccess) goto cant_open_file;
 
             //truong hop mo file thanh cong, in ra he phuong trinh 
-            system("CLS");
-            cout << "Du lieu da nhap tu file la he phuong trinh:  " << endl;
+            clrscr();
+            cout << "Dữ liệu đã nhập là hệ phương trình:  " << endl;
             printProblem(arr_heso, so_an);
 		}
 		
@@ -111,7 +121,7 @@ int main() {
 		
 		cant_open_file:; //neu khong the mo file de input thi chuong trinh se nhay den doan nay
 		
-		system("pause");
+		pause();
 	}
 	return 0;
 }

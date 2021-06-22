@@ -15,22 +15,21 @@ void calcExKrame(double ex[], double arr[][200], double det, int n);
 void permutateTriangle(int n, double arr[][200], double resultArr[][200]);
 int checkEx(double ex[], int n);
 
-
 //main functions
 void doKrameMethod(double arr[][200], int n, double ex[]) {
 	double resultArr[200][200];
 	permutateTriangle(n, arr, resultArr);
-	cout << "Sau khi bien doi ma tran ve ma tran tam giac: " << endl;
+	cout << "Sau khi biến đổi ma trận về ma trận tam giác: " << endl;
 	printProblem(resultArr, n);
 	double det = calcDetKrame(resultArr, n);
-	cout << "Dinh thuc cua ma tran vuong A la: " << det << endl;
+	cout << "Định thức của ma trận vuông A là: " << det << endl;
 	checkDetKrame(ex, det, n, arr);
 }
 
 void doGaussMethod(double arr[][200], int n, double ex[]){
 	double resultArr[200][200];
 	permutateTriangle(n, arr, resultArr);
-	cout << "Sau khi bien doi ma tran ve ma tran tam giac: " << endl;
+	cout << "Sau khi biến đổi ma trận về ma trận tam giác: " << endl;
 	printProblem(resultArr, n);
 	findReverseExGauss(ex, n, resultArr);
 }
@@ -142,13 +141,13 @@ void calcExKrame(double ex[], double arr[][200], double det, int n) {
 			tempArr[j][n] = temp;
 		}
 		
-		cout << "Ma tran A" << i + 1 << " la: " << endl;
+		cout << "Ma trận A" << i + 1 << " là: " << endl;
 		printProblem(tempArr, n);
 		permutateTriangle(n, tempArr, tempArr);
-		cout << "Ma tran A" << i + 1 << " sau khi bien doi ve ma tran tam giac: " << endl;
+		cout << "Ma trận A" << i + 1 << " sau khi biến đổi về ma trận tam giác: " << endl;
 		printProblem(tempArr, n);
 		double detI = calcDetKrame(tempArr, n);
-		cout << "Dinh thuc cua ma tran vuong A" << i + 1 << ": " << detI << endl;
+		cout << "Định thức của ma trận vuông A" << i + 1 << ": " << detI << endl;
 		ex[i] = detI / det;
 	}
 }
