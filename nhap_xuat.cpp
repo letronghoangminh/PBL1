@@ -64,7 +64,7 @@ void doFileInput(double arr[][ARR_SIZE], string file_name, int *so_an, int *succ
 }
 
 void printProblem(double arr[][ARR_SIZE], int so_an) {
-     cout << "+--------------------------------------------+" << endl;
+    cout << "+--------------------------------------------+" << endl;
     for(int i = 0; i < so_an; i++) {
         for(int j = 0; j < so_an - 1; j++) {
             printf("%7.2lfx%d + ",arr[i][j], j+1);
