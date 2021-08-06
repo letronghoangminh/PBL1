@@ -66,15 +66,15 @@ int main() {
 		
 		//Da nhap input, tien hanh giai he phuong trinh
 		if(selection == "1") {
-			doGaussMethod(factorArr, numberOfUnknowns, rootArr);
+			doGaussJordanMethod(factorArr, numberOfUnknowns, rootArr);
 		}
 		
 		if(selection == "2") {
-			doKrameMethod(factorArr, numberOfUnknowns, rootArr);
+			doCramerMethod(factorArr, numberOfUnknowns, rootArr);
 		}
 
-    	// bien situation luu 3 gia tri: 2 la co nghiem, 1 la vo so nghiem, 0 la vo nghiem
-    	situation = checkEx(rootArr, numberOfUnknowns);
+    // bien situation luu 3 gia tri: 2 la co nghiem, 1 la vo so nghiem, 0 la vo nghiem
+    situation = checkEx(rootArr, numberOfUnknowns);
     	
 		//Giai xong he phuong trinh, tien hanh xuat nghiem ra man hinh (xuat rootArr[])
 		doConsoleOutput(rootArr, numberOfUnknowns, situation);
@@ -93,7 +93,7 @@ void welcomeScreen() {
           << "+----------------------------------------------+" << endl
           << "|                                              |" << endl
           << "|   ĐỀ TÀI: GIẢI HỆ PHƯƠNG TRÌNH TUYẾN TÍNH    |" << endl
-          << "|         BẰNG PHƯƠNG PHÁP GAUSS/KRAME         |" << endl
+          << "|         BẰNG PHƯƠNG PHÁP Gauss-Jordan/Cramer |" << endl
           << "|                                              |" << endl
           << "|            Sinh viên thực hiện:              |" << endl
           << "|          1. Lê Trọng Hoàng Minh              |" << endl 
@@ -110,8 +110,8 @@ void index() {
         << "|     Giải hệ phương trình tuyến tính    |" << endl
         << "+----------------------------------------+" << endl
         << "|                                        |" << endl
-        << "|         1. Phương pháp Gauss           |" << endl
-        << "|         2. Phương pháp Krame           |" << endl
+        << "|         1. Phương pháp Gauss-Jordan    |" << endl
+        << "|         2. Phương pháp Cramer          |" << endl
         << "|         3. Thoát                       |" << endl
         << "|                                        |" << endl
         << "+----------------------------------------+" << endl
