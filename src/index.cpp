@@ -89,33 +89,33 @@ int main() {
 
 void welcomeScreen() {
     cout	<< "+----------------------------------------------+" << endl
-			<< "|     ĐỒ ÁN LẬP TRÌNH TÍNH TOÁN  PBL1 20.16    |" << endl
-			<< "+----------------------------------------------+" << endl
-			<< "|                                              |" << endl
-			<< "|   ĐỀ TÀI: GIẢI HỆ PHƯƠNG TRÌNH TUYẾN TÍNH    |" << endl
-			<< "|         BẰNG PHƯƠNG PHÁP GAUSS/KRAME         |" << endl
-			<< "|                                              |" << endl
-			<< "|            Sinh viên thực hiện:              |" << endl
-            << "|          1. Lê Trọng Hoàng Minh              |" << endl 
-            << "|          2. Nguyễn Văn Hoàng Nhân            |" << endl
-            << "|                                              |" << endl
- 			<< "+----------------------------------------------+" << endl
-			<< endl << endl;
+          << "|     ĐỒ ÁN LẬP TRÌNH TÍNH TOÁN  PBL1 20.16    |" << endl
+          << "+----------------------------------------------+" << endl
+          << "|                                              |" << endl
+          << "|   ĐỀ TÀI: GIẢI HỆ PHƯƠNG TRÌNH TUYẾN TÍNH    |" << endl
+          << "|         BẰNG PHƯƠNG PHÁP GAUSS/KRAME         |" << endl
+          << "|                                              |" << endl
+          << "|            Sinh viên thực hiện:              |" << endl
+          << "|          1. Lê Trọng Hoàng Minh              |" << endl 
+          << "|          2. Nguyễn Văn Hoàng Nhân            |" << endl
+          << "|                                              |" << endl
+          << "+----------------------------------------------+" << endl
+          << endl << endl;
 }
 
 void index() {
 	// Menu
 	clrscr(); 
 	cout	<< "+----------------------------------------+" << endl
-			<< "|     Giải hệ phương trình tuyến tính    |" << endl
-			<< "+----------------------------------------+" << endl
-			<< "|                                        |" << endl
-			<< "|         1. Phương pháp Gauss           |" << endl
-			<< "|         2. Phương pháp Krame           |" << endl
-			<< "|         3. Thoát                       |" << endl
-			<< "|                                        |" << endl
-			<< "+----------------------------------------+" << endl
-			<< endl;
+        << "|     Giải hệ phương trình tuyến tính    |" << endl
+        << "+----------------------------------------+" << endl
+        << "|                                        |" << endl
+        << "|         1. Phương pháp Gauss           |" << endl
+        << "|         2. Phương pháp Krame           |" << endl
+        << "|         3. Thoát                       |" << endl
+        << "|                                        |" << endl
+        << "+----------------------------------------+" << endl
+        << endl;
 	
 	//Validate lua chon 
 	do {

@@ -39,8 +39,6 @@ void inputMenu() {
 }
 
 void doFileInput(double arr[][ARR_SIZE], string file_name, int *numberOfUnknowns, int *success) {
-	
-	
 	ifstream infile;
   file_name = "data/" + file_name;
 
@@ -61,8 +59,7 @@ void doFileInput(double arr[][ARR_SIZE], string file_name, int *numberOfUnknowns
 	}
 	
 	cout << "Không thể mở file!" << endl;
-	*success = 0;
-	
+	*success = 0;	
 }
 
 void printProblem(double arr[][ARR_SIZE], int numberOfUnknowns) {

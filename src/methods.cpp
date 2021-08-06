@@ -109,7 +109,6 @@ double calcDetKrame(double arr[][200], int n) {
 	return det;
 }
 
-
 void checkDetKrame(double rootArr[], double det, int n, double arr[][200]) {
 	if (det == 0) {
 		for (int i = 1; i < n; i++) {
