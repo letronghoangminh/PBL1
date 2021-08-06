@@ -1,37 +1,37 @@
 #pragma once
 #include <iostream>
 #include <math.h>
-#include "nhap_xuat.cpp"
+#include "input_output.cpp"
 
 /*
  * This file contain 2 main method that solve the problem
  */
 
 //Declaring utilities functions
-void findReverseExGauss(double ex[], int n, double arr[][200]);
+void findReverseExGauss(double rootArr[], int n, double arr[][200]);
 double calcDetKrame(double arr[][200], int n);
-void checkDetKrame(double ex[],double det, int n, double arr[][200]);
-void calcExKrame(double ex[], double arr[][200], double det, int n);
+void checkDetKrame(double rootArr[],double det, int n, double arr[][200]);
+void calcExKrame(double rootArr[], double arr[][200], double det, int n);
 void permutateTriangle(int n, double arr[][200], double resultArr[][200]);
-int checkEx(double ex[], int n);
+int checkEx(double rootArr[], int n);
 
 //main functions
-void doKrameMethod(double arr[][200], int n, double ex[]) {
+void doKrameMethod(double arr[][200], int n, double rootArr[]) {
 	double resultArr[200][200];
 	permutateTriangle(n, arr, resultArr);
 	cout << "Sau khi biến đổi ma trận về ma trận tam giác: " << endl;
 	printProblem(resultArr, n);
 	double det = calcDetKrame(resultArr, n);
 	cout << "Định thức của ma trận vuông A là: " << det << endl;
-	checkDetKrame(ex, det, n, arr);
+	checkDetKrame(rootArr, det, n, arr);
 }
 
-void doGaussMethod(double arr[][200], int n, double ex[]){
+void doGaussMethod(double arr[][200], int n, double rootArr[]){
 	double resultArr[200][200];
 	permutateTriangle(n, arr, resultArr);
 	cout << "Sau khi biến đổi ma trận về ma trận tam giác: " << endl;
 	printProblem(resultArr, n);
-	findReverseExGauss(ex, n, resultArr);
+	findReverseExGauss(rootArr, n, resultArr);
 }
 
 //main functions
@@ -74,24 +74,24 @@ void permutateTriangle(int n, double arr[][200], double resultArr[][200]) {
 	}
 }
 
-void findReverseExGauss(double ex[], int n, double arr[][200]) {
+void findReverseExGauss(double rootArr[], int n, double arr[][200]) {
 	for (int i = n - 1; i >= 0; i--) {
 		double s = arr[i][n];
 
 		for (int k = i + 1; k < n; k++) {
-			s -= arr[i][k] * ex[k];
+			s -= arr[i][k] * rootArr[k];
 		}
 
-		ex[i] = s / arr[i][i];
+		rootArr[i] = s / arr[i][i];
 	}
 }
 
-int checkEx(double ex[], int n) {
+int checkEx(double rootArr[], int n) {
 	for (int i = 0; i < n; i++) {
-		if (ex[i] == INFINITY || ex[i] == -INFINITY) {
+		if (rootArr[i] == INFINITY || rootArr[i] == -INFINITY) {
 			return 0;
 		}
-		if (isnan(ex[i])) {
+		if (isnan(rootArr[i])) {
 			return 1;
 		}
 	}
@@ -110,22 +110,22 @@ double calcDetKrame(double arr[][200], int n) {
 }
 
 
-void checkDetKrame(double ex[], double det, int n, double arr[][200]) {
+void checkDetKrame(double rootArr[], double det, int n, double arr[][200]) {
 	if (det == 0) {
 		for (int i = 1; i < n; i++) {
 			if (arr[i][n] != arr[i - 1][n]) {
-				ex[0] = INFINITY;
+				rootArr[0] = INFINITY;
 				return;
 			}
 		}
 
-		ex[0] = NAN;
+		rootArr[0] = NAN;
 	} else {
-		calcExKrame(ex, arr, det, n);	
+		calcExKrame(rootArr, arr, det, n);	
 	}
 }
 
-void calcExKrame(double ex[], double arr[][200], double det, int n) {
+void calcExKrame(double rootArr[], double arr[][200], double det, int n) {
 	for (int i = 0; i < n; i++) {
 		double tempArr[200][200];
 
@@ -148,7 +148,7 @@ void calcExKrame(double ex[], double arr[][200], double det, int n) {
 		printProblem(tempArr, n);
 		double detI = calcDetKrame(tempArr, n);
 		cout << "Định thức của ma trận vuông A" << i + 1 << ": " << detI << endl;
-		ex[i] = detI / det;
+		rootArr[i] = detI / det;
 	}
 }
 
