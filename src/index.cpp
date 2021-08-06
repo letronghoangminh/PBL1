@@ -5,17 +5,22 @@
 #include "format.cpp"
 
 using namespace std;
+
 int numberOfUnknowns = 0;	
-double factorArr[ARR_SIZE][ARR_SIZE]; //Mang chua he so
-double rootArr[ARR_SIZE]; //Mang chua nghiem
+double factorArr[ARR_SIZE][ARR_SIZE]; // Mảng chứa hệ số
+double rootArr[ARR_SIZE]; // Mảng chứa nghiệm
+int situation; // biến chứa 3 trường hợp giải nghiệm
 
 string selection = "0";
 int isSelected = 0;
-int situation;
 int inputSuccess = 1;
 
 void welcomeScreen();
 void index();
+
+
+/******************************************************/
+
 
 int main() {
     SetUnicode();
@@ -37,9 +42,9 @@ int main() {
 
 		if(selection == "3") return 0;
 		
-		/* Da chon phuong thuc giai, tien hanh nhap input
-		 * Input bao gom so an cua he phuong trinh  numberOfUnknowns) va cac he so cua he phuong trinh (arr)
-		 */
+		// Đã chọn phương pháp giải, tiến hành nhập input
+		// Input bao gồm số ẩn cua hệ phương trình (numberOfUnknowns) và các hệ số của hệ phương trình (factorArr)
+		//
 		inputMenu();
 		if(selectionInput == "1") {
 			cout << "====> Nhập số ẩn: ";
@@ -64,7 +69,8 @@ int main() {
             printProblem(factorArr, numberOfUnknowns);
 		}
 		
-		//Da nhap input, tien hanh giai he phuong trinh
+		// Đã nhập input
+    // Tiến hành giải hệ phương trình bằng 2 phương pháp theo lựa chọn
 		if(selection == "1") {
 			doGaussJordanMethod(factorArr, numberOfUnknowns, rootArr);
 		}
@@ -73,10 +79,10 @@ int main() {
 			doCramerMethod(factorArr, numberOfUnknowns, rootArr);
 		}
 
-    // bien situation luu 3 gia tri: 2 la co nghiem, 1 la vo so nghiem, 0 la vo nghiem
+    // Biến situation lưu 3 giá trị: 2 là có nghiệm, 1 là vô số nghiệm, 0 là vô nghiệm
     situation = checkEx(rootArr, numberOfUnknowns);
     	
-		//Giai xong he phuong trinh, tien hanh xuat nghiem ra man hinh (xuat rootArr[])
+		//Giải xong hệ phương trình, xuất nghiệm ra Console
 		doConsoleOutput(rootArr, numberOfUnknowns, situation);
 		
 		cant_open_file:; //neu khong the mo file de input thi chuong trinh se nhay den doan nay
@@ -85,6 +91,9 @@ int main() {
 	}
 	return 0;
 }
+
+
+/******************************************************/
 
 
 void welcomeScreen() {
@@ -103,6 +112,7 @@ void welcomeScreen() {
           << endl << endl;
 }
 
+
 void index() {
 	// Menu
 	clrscr(); 
@@ -117,7 +127,7 @@ void index() {
         << "+----------------------------------------+" << endl
         << endl;
 	
-	//Validate lua chon 
+	//Validate lựa chọn (isSelected chỉ có 3 giá trị "1", "2", "3") 
 	do {
 		isSelected = 0;
 		cout << "====> Nhap lua chon cua ban: ";

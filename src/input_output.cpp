@@ -16,6 +16,10 @@ void doConsoleInput(double arr[][ARR_SIZE], int numberOfUnknowns);
 void doConsoleInput(double arr[][ARR_SIZE], int numberOfUnknowns);
 void doConsoleOutput(double ex[], int numberOfUnknowns, int situation);
 
+
+/******************************************************/
+
+
 void inputMenu() {
 	system("CLS"); 
 	cout  << "+----------------------------------------+" << endl

@@ -12,19 +12,15 @@ using namespace std;
 
 //Declaring utilities functions
 void eliminateGaussJordan(int n, double arr[][200], double resultArr[][200]);
-
 void findRootGaussJordan(double rootArr[], int n, double arr[][200]);
-
 double calcDetCramer(double arr[][200], int n);
-
 void checkDetCramer(double rootArr[],double det, int n, double arr[][200]);
-
 void calcExCramer(double rootArr[], double arr[][200], double det, int n);
-
 void permutateTriangle(int n, double arr[][200], double resultArr[][200]);
-
 int checkEx(double rootArr[], int n);
 
+
+/******************************************************/
 
 
 //main functions

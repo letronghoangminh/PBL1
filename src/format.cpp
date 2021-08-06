@@ -1,5 +1,13 @@
 #include <Windows.h>
+
 using namespace std;
+
+void SetUnicode();
+void SetColor();
+void clrscr();
+void pause();
+
+/******************************************************/
 
 void SetUnicode() {
      SetConsoleOutputCP(65001);
