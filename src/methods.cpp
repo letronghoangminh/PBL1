@@ -102,7 +102,7 @@ void permutateTriangle(int n, double arr[][200], double cloneArray[][200]) {
 			for (int j = i + 1; j < n; j++) {
 				if (abs(cloneArray[j][i]) > 0.01) {
 					for (int k = 0; k < n + 1; k++) {
-						swapArrayElement(i, j, k);
+						swapArrayElement(cloneArray, i, j, k);
 					}
 				}
 				break;
@@ -227,9 +227,9 @@ void handleFloatErrors(double arr[][200], int n) {
 }
 
 void swapArrayElement(double arr[][200], int firstRow, int secondRow, int column) {
-	double temp = cloneArray[firstRow][column];
-	cloneArray[firstRow][column] = cloneArray[secondRow][column];
-	cloneArray[secondRow][column] = temp;
+	double temp = arr[firstRow][column];
+	arr[firstRow][column] = arr[secondRow][column];
+	arr[secondRow][column] = temp;
 }
 
 
