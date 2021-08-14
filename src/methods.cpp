@@ -11,13 +11,20 @@ using namespace std;
  */
 
 //Declaring utilities functions
-void eliminateGaussJordan(int n, double arr[][200], double resultArr[][200]);
+void eliminateGaussJordan(int n, double arr[][200], double cloneArray[][200]);
 void findRootGaussJordan(double rootArr[], int n, double arr[][200]);
+
+
 double calcDetCramer(double arr[][200], int n);
 void checkDetCramer(double rootArr[],double det, int n, double arr[][200]);
-void calcExCramer(double rootArr[], double arr[][200], double det, int n);
-void permutateTriangle(int n, double arr[][200], double resultArr[][200]);
-int checkEx(double rootArr[], int n);
+void calcRootCramer(double rootArr[], double arr[][200], double det, int n);
+
+void permutateTriangle(int n, double arr[][200], double cloneArray[][200]);
+int checkRoot(double rootArr[], int n);
+void copyArray(double arr[][200], double cloneArray[][200], int n);
+void swapColunm(double arr[][200], int col, int n);
+void handleFloatErrors(double arr[][200], int n);
+void swapArrayElement(double arr[][200], int firstRow, int secondRow, int column);
 
 
 /******************************************************/
@@ -25,21 +32,25 @@ int checkEx(double rootArr[], int n);
 
 //main functions
 void doCramerMethod(double arr[][200], int n, double rootArr[]) {
-	double resultArr[200][200];
-	permutateTriangle(n, arr, resultArr);
+	double cloneArray[200][200];
+	permutateTriangle(n, arr, cloneArray);
+
 	cout << "Sau khi biến đổi ma trận về ma trận tam giác: " << endl;
-	printProblem(resultArr, n);
-	double det = calcDetCramer(resultArr, n);
+	printProblem(cloneArray, n);
+
+	double det = calcDetCramer(cloneArray, n);
 	cout << "Định thức của ma trận vuông A là: " << det << endl;
+
 	checkDetCramer(rootArr, det, n, arr);
 }
 
 
 void doGaussJordanMethod(double arr[][200], int n, double rootArr[]){
-	double resultArr[200][200];
+	double cloneArray[200][200];
 	cout << "Sau khi biến đổi ma trận bằng phương pháp khử Gauss-Jordan: " << endl;
-	eliminateGaussJordan(n, arr, resultArr);
-	findRootGaussJordan(rootArr, n, resultArr);
+
+	eliminateGaussJordan(n, arr, cloneArray);
+	findRootGaussJordan(rootArr, n, cloneArray);
 }
 
 //main functions
@@ -47,75 +58,68 @@ void doGaussJordanMethod(double arr[][200], int n, double rootArr[]){
 
 
 //Utilities function
-void eliminateGaussJordan(int n, double arr[][200], double resultArr[][200]) {
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n + 1; j++) {
-			resultArr[i][j] = arr[i][j];
-		}
-	}
+
+void eliminateGaussJordan(int n, double arr[][200], double cloneArray[][200]) {
+	copyArray(arr, cloneArray, n);
 
 	for (int i = 0; i < n; i++) {
-    if (resultArr[i][i] == 0.0) {
-			printProblem(resultArr, n);
-      if (resultArr[i][n] == 0.0) {
-				resultArr[i][n] = NAN;
+		// Check if arr[i][i] = 0 then handle ending program situations
+    if (cloneArray[i][i] == 0.0) {
+			printProblem(cloneArray, n);
+      if (cloneArray[i][n] == 0.0) {
+				// Setting this for checking infinite roots
+				cloneArray[i][n] = NAN;
 			} else {
-				resultArr[i][n] = INFINITY;
+				// Setting this for checking no roots
+				cloneArray[i][n] = INFINITY;
 			}
       return;
     }
 
+		// Doing Gauss-Jordan elimination
     for (int j = 0; j < n; j++) {
       if (i != j) {
-        double ratio = resultArr[j][i] / resultArr[i][i];
+        double ratio = cloneArray[j][i] / cloneArray[i][i];
 
         for (int k = 0; k < n + 1; k++)
         {
-          resultArr[j][k] = resultArr[j][k] - ratio * resultArr[i][k];
+          cloneArray[j][k] = cloneArray[j][k] - ratio * cloneArray[i][k];
         }
       }
     }
   }
 
-	printProblem(resultArr, n);
+	printProblem(cloneArray, n);
 }
 
 
-void permutateTriangle(int n, double arr[][200], double resultArr[][200]) {
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n + 1; j++) {
-			resultArr[i][j] = arr[i][j];
-		}
-	}
+void permutateTriangle(int n, double arr[][200], double cloneArray[][200]) {
+	copyArray(arr, cloneArray, n);
 
 	for (int i = 0; i < n - 1; i++) {
-		if (abs(resultArr[i][i]) < 0.001) {
+		// Check if arr[i][i] = 0 then swap rows
+		if (abs(cloneArray[i][i]) < 0.001) {
 			for (int j = i + 1; j < n; j++) {
-				if (abs(resultArr[j][i]) > 0.01) {
+				if (abs(cloneArray[j][i]) > 0.01) {
 					for (int k = 0; k < n + 1; k++) {
-						double temp = resultArr[i][k];
-						resultArr[i][k] = resultArr[j][k];
-						resultArr[j][k] = temp;
+						swapArrayElement(i, j, k);
 					}
 				}
 				break;
 			}
 		}
 
+		// Doing Gauss elimination
 		for (int j = i + 1; j < n; j++) {
-			double m = - (resultArr[j][i] / resultArr	[i][i]);
+			double m = - (cloneArray[j][i] / cloneArray	[i][i]);
 			
 			for (int k = i; k < n + 1; k++) {
-				resultArr[j][k] += resultArr[i][k] * m;
+				cloneArray[j][k] += cloneArray[i][k] * m;
 			}
 		}
 	}
 
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n + 1; j++) {
-			if (abs(resultArr[i][j]) < 0.001) resultArr[i][j] = 0;
-		}
-	}
+	handleFloatErrors(cloneArray, n);
 }
 
 
@@ -126,12 +130,14 @@ void findRootGaussJordan(double rootArr[], int n, double arr[][200]) {
 }
 
 
-int checkEx(double rootArr[], int n) {
+int checkRoot(double rootArr[], int n) {
 	for (int i = 0; i < n; i++) {
 		if (rootArr[i] == INFINITY || rootArr[i] == -INFINITY) {
+			// No roots
 			return 0;
 		}
 		if (isnan(rootArr[i])) {
+			// Infinite root
 			return 1;
 		}
 	}
@@ -155,43 +161,76 @@ void checkDetCramer(double rootArr[], double det, int n, double arr[][200]) {
 	if (det == 0) {
 		for (int i = 1; i < n; i++) {
 			if (arr[i][n] != arr[i - 1][n]) {
+				// Setting this for checking no roots
 				rootArr[0] = INFINITY;
 				return;
 			}
 		}
 
+		// Setting this for checking infinite roots
 		rootArr[0] = NAN;
 	} else {
-		calcExCramer(rootArr, arr, det, n);	
+		calcRootCramer(rootArr, arr, det, n);	
 	}
 }
 
 
-void calcExCramer(double rootArr[], double arr[][200], double det, int n) {
+void calcRootCramer(double rootArr[], double arr[][200], double det, int n) {
 	for (int i = 0; i < n; i++) {
 		double tempArr[200][200];
 
-		for (int k = 0; k < n; k++) {
-			for (int j = 0; j < n + 1; j++) {
-				tempArr[k][j] = arr[k][j];
-			}
-		}
+		copyArray(arr, tempArr, n);
 
-		for (int j = 0; j < n; j++) {
-			double temp = tempArr[j][i];
-			tempArr[j][i] = tempArr[j][n];
-			tempArr[j][n] = temp;
-		}
+		// Making Ai array
+		swapColunm(tempArr, i, n);
 		
 		cout << "Ma trận A" << i + 1 << " là: " << endl;
 		printProblem(tempArr, n);
+
+		// Turn matrix to triangle matrix
 		permutateTriangle(n, tempArr, tempArr);
 		cout << "Ma trận A" << i + 1 << " sau khi biến đổi về ma trận tam giác: " << endl;
 		printProblem(tempArr, n);
+		
 		double detI = calcDetCramer(tempArr, n);
 		cout << "Định thức của ma trận vuông A" << i + 1 << ": " << detI << endl;
+
 		rootArr[i] = detI / det;
 	}
 }
+
+
+void copyArray(double arr[][200], double cloneArray[][200], int n) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n + 1; j++) {
+			cloneArray[i][j] = arr[i][j];
+		}
+	}
+}
+
+
+void swapColunm(double arr[][200], int col, int n) {
+	for (int i = 0; i < n; i++) {
+			double temp = arr[i][col];
+			arr[i][col] = arr[i][n];
+			arr[i][n] = temp;
+	}
+}
+
+
+void handleFloatErrors(double arr[][200], int n) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n + 1; j++) {
+			if (abs(arr[i][j]) < 0.001) arr[i][j] = 0;
+		}
+	}
+}
+
+void swapArrayElement(double arr[][200], int firstRow, int secondRow, int column) {
+	double temp = cloneArray[firstRow][column];
+	cloneArray[firstRow][column] = cloneArray[secondRow][column];
+	cloneArray[secondRow][column] = temp;
+}
+
 
 //Utilities functions

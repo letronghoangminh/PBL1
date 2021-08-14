@@ -80,7 +80,7 @@ int main() {
 		}
 
     // Biến situation lưu 3 giá trị: 2 là có nghiệm, 1 là vô số nghiệm, 0 là vô nghiệm
-    situation = checkEx(rootArr, numberOfUnknowns);
+    situation = checkRoot(rootArr, numberOfUnknowns);
     	
 		//Giải xong hệ phương trình, xuất nghiệm ra Console
 		doConsoleOutput(rootArr, numberOfUnknowns, situation);
