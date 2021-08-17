@@ -102,7 +102,7 @@ void inputMenu(double factorArr[][ARR_SIZE], int *numberOfUnknowns, int *inputSu
 void doFileInput(double arr[][ARR_SIZE], string fileName, int *numberOfUnknowns, int *success) {
 	ifstream infile;
   fileName = "data/" + fileName;
-
+  *success = 1;	
 	infile.open(fileName.c_str());
 	
 	if( infile.is_open() ) {
