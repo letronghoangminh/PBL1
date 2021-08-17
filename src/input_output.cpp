@@ -10,6 +10,8 @@ const int ARR_SIZE = 200;
 string selectionInput = "0";
 int isSelected2 = 0;
 
+
+void welcomeScreen();
 void selectMethodMenu(string *selection);
 void inputMenu(double factorArr[][ARR_SIZE], int *numberOfUnknowns, int *inputSuccess);
 void doFileInput(double arr[][ARR_SIZE], string fileName, int *numberOfUnknowns, int *success);
@@ -20,6 +22,22 @@ void doConsoleOutput(double ex[], int numberOfUnknowns, int situation);
 
 
 /******************************************************/
+
+void welcomeScreen() {
+    cout	<< "+----------------------------------------------+" << endl
+          << "|     ĐỒ ÁN LẬP TRÌNH TÍNH TOÁN  PBL1 20.16    |" << endl
+          << "+----------------------------------------------+" << endl
+          << "|                                              |" << endl
+          << "|   ĐỀ TÀI: GIẢI HỆ PHƯƠNG TRÌNH TUYẾN TÍNH    |" << endl
+          << "|         BẰNG PHƯƠNG PHÁP Gauss-Jordan/Cramer |" << endl
+          << "|                                              |" << endl
+          << "|            Sinh viên thực hiện:              |" << endl
+          << "|          1. Lê Trọng Hoàng Minh              |" << endl 
+          << "|          2. Nguyễn Văn Hoàng Nhân            |" << endl
+          << "|                                              |" << endl
+          << "+----------------------------------------------+" << endl
+          << endl << endl;
+}
 
 void selectMethodMenu(string *selection) {
 	// Menu

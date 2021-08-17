@@ -84,19 +84,3 @@ int main() {
 
 /******************************************************/
 
-
-void welcomeScreen() {
-    cout	<< "+----------------------------------------------+" << endl
-          << "|     ĐỒ ÁN LẬP TRÌNH TÍNH TOÁN  PBL1 20.16    |" << endl
-          << "+----------------------------------------------+" << endl
-          << "|                                              |" << endl
-          << "|   ĐỀ TÀI: GIẢI HỆ PHƯƠNG TRÌNH TUYẾN TÍNH    |" << endl
-          << "|         BẰNG PHƯƠNG PHÁP Gauss-Jordan/Cramer |" << endl
-          << "|                                              |" << endl
-          << "|            Sinh viên thực hiện:              |" << endl
-          << "|          1. Lê Trọng Hoàng Minh              |" << endl 
-          << "|          2. Nguyễn Văn Hoàng Nhân            |" << endl
-          << "|                                              |" << endl
-          << "+----------------------------------------------+" << endl
-          << endl << endl;
-}
