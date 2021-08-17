@@ -14,8 +14,6 @@ int situation; // biến chứa 3 trường hợp giải nghiệm
 string selection = "0";
 int inputSuccess = 1;
 
-void welcomeScreen();
-
 /******************************************************/
 
 
