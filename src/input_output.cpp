@@ -102,9 +102,7 @@ void inputMenu(double factorArr[][ARR_SIZE], int *numberOfUnknowns, int *inputSu
 void doFileInput(double arr[][ARR_SIZE], string fileName, int *numberOfUnknowns, int *success) {
 	ifstream infile;
   fileName = "data/" + fileName;
-  *success = 1;	
 	infile.open(fileName.c_str());
-	
 	if( infile.is_open() ) {
 		infile >> *numberOfUnknowns; 
 		int n;
@@ -156,7 +154,6 @@ void doConsoleOutput(double ex[], int numberOfUnknowns, int situation) {
 	}
 	
 	if(situation == 2) {
-		cout << "\n====> Các ẩn của hệ phương trình là: " << endl;
         printf("            +---------+--------------------+\n");
         printf("            |   STT   |       Giá trị      |\n");
         printf("            +---------+--------------------+\n");
