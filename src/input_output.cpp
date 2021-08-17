@@ -53,7 +53,7 @@ void selectMethodMenu(string *selection) {
         << "+----------------------------------------+" << endl
         << endl;
 	
-	//Validate lựa chọn (isSelected chỉ có 3 giá trị "1", "2", "3")
+	//Validate choices (isSelected has 3 values "1", "2", "3")
   int isSelected = 0; 
 	do {
 		isSelected = 0;

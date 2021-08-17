@@ -7,9 +7,9 @@
 using namespace std;
 
 int numberOfUnknowns = 0;	
-double factorArr[ARR_SIZE][ARR_SIZE]; // Mảng chứa hệ số
-double rootArr[ARR_SIZE]; // Mảng chứa nghiệm
-int situation; // biến chứa 3 trường hợp giải nghiệm
+double factorArr[ARR_SIZE][ARR_SIZE]; // Array of coefficients
+double rootArr[ARR_SIZE]; // Array of roots
+int situation; // 3 situations of root
 
 string selection = "0";
 int inputSuccess = 1;
@@ -39,12 +39,12 @@ int main() {
 
 		if(selection == "3") return 0;
 		
-		// Đã chọn phương pháp giải, tiến hành nhập input
-		// Input bao gồm số ẩn cua hệ phương trình (numberOfUnknowns) và các hệ số của hệ phương trình (factorArr)
-    // Nếu input bằng file, giá trị inputSuccess trả về 0 khi mở file thất bại. 
+		// Method is chosen.
+		// Input contains of numberOfUnknowns and coefficients
+    // If input by file return inputSuccess = 0 khi when failing to open file 
 		inputMenu(factorArr, &numberOfUnknowns, &inputSuccess);
 
-    //Trường hợp mở file thất bại, không thực hiện bước tính nghiệm và kết thúc phiên
+    // If faling to open file, end session
     if(!inputSuccess) {
       setColor(0,4);
       cout << "Không thể mở file!" << endl;
@@ -57,8 +57,8 @@ int main() {
     printProblem(factorArr, numberOfUnknowns);
 		
 		
-    // Tiến hành giải hệ phương trình bằng 2 phương pháp theo lựa chọn
-    // Lưu nghiệm vào mảng rootArr[]
+    // Find roots with chosen method
+    // Store roots in rootArr
 		if(selection == "1") {
 			doGaussJordanMethod(factorArr, numberOfUnknowns, rootArr);
 		}
@@ -66,11 +66,11 @@ int main() {
 			doCramerMethod(factorArr, numberOfUnknowns, rootArr);
 		}
 
-    // Biến situation lưu 3 giá trị ứng với 3 trường hợp: 2 là có nghiệm, 1 là vô số nghiệm, 0 là vô nghiệm
-    // Hàm checkRoot để kiểm tra trường hợp nghiệm
+    // situation variable: 2 means normal roots, 1 means infinte roots, 0 means no root
+    // checkRoot function to check the situation of roots
     situation = checkRoot(rootArr, numberOfUnknowns);
     	
-		//Giải xong hệ phương trình, xuất nghiệm ra Console và file
+		// After finishing solving the problem, output to console and file
 		doConsoleOutput(rootArr, numberOfUnknowns, situation);
 		doFileOutput(rootArr, numberOfUnknowns, situation);
 		end_session:;
