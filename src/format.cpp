@@ -1,19 +1,20 @@
+#pragma once
 #include <Windows.h>
 
 using namespace std;
 
-void SetUnicode();
-void SetColor();
+void setUnicode();
+void setColor();
 void clrscr();
 void pause();
 
 /******************************************************/
 
-void SetUnicode() {
+void setUnicode() {
      SetConsoleOutputCP(65001);
 }
 
-void SetColor(int background_color, int text_color)
+void setColor(int background_color, int text_color)
 {
     HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
     int color_code = background_color * 16 + text_color;
@@ -30,6 +31,8 @@ void clrscr() {
     system("cls");
 }
 void pause() {
+    setColor(0,10);
     cout << "Nhấn phím bất kỳ để tiếp tục..." << endl;
+    setColor(0,15);
     system("pause > nul");
 }

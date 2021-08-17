@@ -39,7 +39,7 @@ void doCramerMethod(double arr[][200], int n, double rootArr[]) {
 	printProblem(cloneArray, n);
 
 	double det = calcDetCramer(cloneArray, n);
-	cout << "Định thức của ma trận vuông A là: " << det << endl;
+	cout << "Định thức của ma trận vuông A là: " << det << endl << endl << endl;
 
 	checkDetCramer(rootArr, det, n, arr);
 }
@@ -193,7 +193,7 @@ void calcRootCramer(double rootArr[], double arr[][200], double det, int n) {
 		printProblem(tempArr, n);
 		
 		double detI = calcDetCramer(tempArr, n);
-		cout << "Định thức của ma trận vuông A" << i + 1 << ": " << detI << endl;
+		cout << "Định thức của ma trận vuông A" << i + 1 << ": " << detI << endl << endl << endl;
 
 		rootArr[i] = detI / det;
 	}
