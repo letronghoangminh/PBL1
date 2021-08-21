@@ -88,14 +88,14 @@ void inputMenu(double factorArr[][ARR_SIZE], int *numberOfUnknowns, int *inputSu
 	} while(!isSelected2);
 
   if(selectionInput == "1") {
-			doConsoleInput(factorArr, numberOfUnknowns);
-		}
-		else if(selectionInput == "2") {
-			string fileName;
-			cout << "\n====> Nhập tên file: "; 
-			cin >> fileName;
-			doFileInput(factorArr, fileName, numberOfUnknowns, inputSuccess);
-		}
+		doConsoleInput(factorArr, numberOfUnknowns);
+	}
+	else if(selectionInput == "2") {
+		string fileName;
+		cout << "\n====> Nhập tên file: "; 
+		cin >> fileName;
+		doFileInput(factorArr, fileName, numberOfUnknowns, inputSuccess);
+	}
 
 }
 
@@ -137,6 +137,7 @@ void doConsoleInput(double arr[][ARR_SIZE], int *numberOfUnknowns) {
 }
 
 void printProblem(double arr[][ARR_SIZE], int numberOfUnknowns) {
+    
     cout << "+--------------------------------------------+" << endl;
     for(int i = 0; i < numberOfUnknowns; i++) {
         for(int j = 0; j < numberOfUnknowns - 1; j++) {
@@ -154,13 +155,14 @@ void doConsoleOutput(double ex[], int numberOfUnknowns, int situation) {
 	}
 	
 	if(situation == 2) {
-        printf("            +---------+--------------------+\n");
-        printf("            |   STT   |       Giá trị      |\n");
-        printf("            +---------+--------------------+\n");
+    cout << "Các ẩn của hệ phương trình là:" << endl;
+    printf("            +---------+--------------------+\n");
+    printf("            |   STT   |       Giá trị      |\n");
+    printf("            +---------+--------------------+\n");
 		for(int i = 0; i < numberOfUnknowns; i++) {
-            printf("            |   x%-3d  |     %-10.3lf     |\n", i+1, ex[i]); 
+      printf("            |   x%-3d  |     %-10.3lf     |\n", i+1, ex[i]); 
 		}	
-        printf("            +---------+--------------------+\n");
+    printf("            +---------+--------------------+\n");
 	}
 	
 	if(situation == 0) {
@@ -175,23 +177,19 @@ void doFileOutput(double ex[], int numberOfUnknowns, int situation) {
   FILE *outfile;
 	outfile = fopen("data/result.out", "w");
 
+  if(situation == 0) {
+		fprintf(outfile,"Hệ phương trình vô nghiệm.");
+	}
+
   if(situation == 1) {
-		fprintf(outfile,"\n====> Hệ phương trình vô số nghiệm.");
+		fprintf(outfile,"Hệ phương trình vô số nghiệm.");
 	}
 	
 	if(situation == 2) {
-		fprintf(outfile,"\n====> Các ẩn của hệ phương trình là: \n");
-    fprintf(outfile,"+---------+--------------------+\n");
-    fprintf(outfile,"|   STT   |       Giá trị      |\n");
-    fprintf(outfile,"+---------+--------------------+\n");
 		for(int i = 0; i < numberOfUnknowns; i++) {
-      fprintf(outfile,"|   x%-3d  |     %-10.3lf     |\n", i+1, ex[i]); 
+      fprintf(outfile,"x%-4d  :     %-10.3lf\n", i+1, ex[i]); 
 		}	
-      fprintf(outfile,"+---------+--------------------+\n");
 	}
-	
-	if(situation == 0) {
-		fprintf(outfile,"\n====> Hệ phương trình vô nghiệm.");
-	}
+
   fclose(outfile);
 }

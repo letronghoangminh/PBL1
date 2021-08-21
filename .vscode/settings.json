@@ -297,7 +297,8 @@
       "string": "cpp",
       "fstream": "cpp",
       "iosfwd": "cpp",
-      "*.tcc": "cpp"
+      "*.tcc": "cpp",
+      "cstdio": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

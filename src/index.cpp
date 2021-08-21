@@ -73,8 +73,8 @@ int main() {
 		// After finishing solving the problem, output to console and file
 		doConsoleOutput(rootArr, numberOfUnknowns, situation);
 		doFileOutput(rootArr, numberOfUnknowns, situation);
-		end_session:;
-	
+		
+    end_session:;
 		pause();
 	}
 
