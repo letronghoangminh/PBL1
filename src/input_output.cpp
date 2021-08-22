@@ -138,14 +138,14 @@ void doConsoleInput(double arr[][ARR_SIZE], int *numberOfUnknowns) {
 
 void printProblem(double arr[][ARR_SIZE], int numberOfUnknowns) {
     
-    cout << "+--------------------------------------------+" << endl;
+    cout << "+--------------------------------------------+\n";
     for(int i = 0; i < numberOfUnknowns; i++) {
         for(int j = 0; j < numberOfUnknowns - 1; j++) {
             printf("%7.2lfx%d + ",arr[i][j], j+1);
         }
         printf("%7.2lfx%d = %7.2lf\n", arr[i][numberOfUnknowns-1], numberOfUnknowns, arr[i][numberOfUnknowns]);
     }
-    cout << "+--------------------------------------------+" << endl << endl;
+    cout << "+--------------------------------------------+\n\n";
 }
 
 void doConsoleOutput(double ex[], int numberOfUnknowns, int situation) {

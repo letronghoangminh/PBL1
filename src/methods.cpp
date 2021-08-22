@@ -22,7 +22,7 @@ void calcRootCramer(double rootArr[], double arr[][200], double det, int n);
 void permutateTriangle(int n, double arr[][200], double cloneArray[][200]);
 int checkRoot(double rootArr[], int n);
 void copyArray(double arr[][200], double cloneArray[][200], int n);
-void swapColunm(double arr[][200], int col, int n);
+void swapColumn(double arr[][200], int col, int n);
 void handleFloatErrors(double arr[][200], int n);
 void swapArrayElement(double arr[][200], int firstRow, int secondRow, int column);
 
@@ -182,7 +182,7 @@ void calcRootCramer(double rootArr[], double arr[][200], double det, int n) {
 		copyArray(arr, tempArr, n);
 
 		// Making Ai array
-		swapColunm(tempArr, i, n);
+		swapColumn(tempArr, i, n);
 		
 		cout << "Ma trận A" << i + 1 << " là: " << endl;
 		printProblem(tempArr, n);
@@ -193,7 +193,8 @@ void calcRootCramer(double rootArr[], double arr[][200], double det, int n) {
 		printProblem(tempArr, n);
 		
 		double detI = calcDetCramer(tempArr, n);
-		cout << "Định thức của ma trận vuông A" << i + 1 << ": " << detI << endl << endl << endl;
+		printf("\033[A"); //go up 1 line in console
+    cout << "Định thức của ma trận vuông A" << i + 1 << ": " << detI << endl << endl << endl;
 
 		rootArr[i] = detI / det;
 	}
@@ -209,7 +210,7 @@ void copyArray(double arr[][200], double cloneArray[][200], int n) {
 }
 
 
-void swapColunm(double arr[][200], int col, int n) {
+void swapColumn(double arr[][200], int col, int n) {
 	for (int i = 0; i < n; i++) {
 			double temp = arr[i][col];
 			arr[i][col] = arr[i][n];
