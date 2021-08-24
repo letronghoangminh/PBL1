@@ -11,8 +11,8 @@ using namespace std;
  */
 
 //Declaring main functions
-void doCramerMethod(double arr[][ARR_SIZE], int n, double rootArr[])
-void doGaussJordanMethod(double arr[][ARR_SIZE], int n, double rootArr[])
+void doCramerMethod(double arr[][ARR_SIZE], int n, double rootArr[]);
+void doGaussJordanMethod(double arr[][ARR_SIZE], int n, double rootArr[]);
 
 //Declaring utilities functions
 void eliminateGaussJordan(int n, double arr[][ARR_SIZE], double cloneArray[][ARR_SIZE]);
