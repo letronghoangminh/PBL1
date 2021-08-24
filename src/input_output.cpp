@@ -7,9 +7,6 @@
 using namespace std;
 
 const int ARR_SIZE = 200;
-string selectionInput = "0";
-int isSelected2 = 0;
-
 
 void welcomeScreen();
 void selectMethodMenu(string *selection);
@@ -79,8 +76,10 @@ void inputMenu(double factorArr[][ARR_SIZE], int *numberOfUnknowns, int *inputSu
         << endl;
 	
 	//Selection Validation
-	isSelected2 = 0;
-	do {
+	int isSelected2 = 0;
+  string selectionInput = "0";
+	
+  do {
 		cout << "====> Nhập lựa chọn của bạn: ";
 		cin >> selectionInput;
 		if(selectionInput == "1" || selectionInput == "2")

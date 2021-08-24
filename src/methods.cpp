@@ -10,29 +10,33 @@ using namespace std;
  * This file contain 2 main method that solve the problem
  */
 
+//Declaring main functions
+void doCramerMethod(double arr[][ARR_SIZE], int n, double rootArr[])
+void doGaussJordanMethod(double arr[][ARR_SIZE], int n, double rootArr[])
+
 //Declaring utilities functions
-void eliminateGaussJordan(int n, double arr[][200], double cloneArray[][200]);
-void findRootGaussJordan(double rootArr[], int n, double arr[][200]);
+void eliminateGaussJordan(int n, double arr[][ARR_SIZE], double cloneArray[][ARR_SIZE]);
+void findRootGaussJordan(double rootArr[], int n, double arr[][ARR_SIZE]);
 
 
-double calcDetCramer(double arr[][200], int n);
-void checkDetCramer(double rootArr[],double det, int n, double arr[][200]);
-void calcRootCramer(double rootArr[], double arr[][200], double det, int n);
+double calcDetCramer(double arr[][ARR_SIZE], int n);
+void checkDetCramer(double rootArr[],double det, int n, double arr[][ARR_SIZE]);
+void calcRootCramer(double rootArr[], double arr[][ARR_SIZE], double det, int n);
 
-void permutateTriangle(int n, double arr[][200], double cloneArray[][200]);
+void permutateTriangle(int n, double arr[][ARR_SIZE], double cloneArray[][ARR_SIZE]);
 int checkRoot(double rootArr[], int n);
-void copyArray(double arr[][200], double cloneArray[][200], int n);
-void swapColumn(double arr[][200], int col, int n);
-void handleFloatErrors(double arr[][200], int n);
-void swapArrayElement(double arr[][200], int firstRow, int secondRow, int column);
+void copyArray(double arr[][ARR_SIZE], double cloneArray[][ARR_SIZE], int n);
+void swapColumn(double arr[][ARR_SIZE], int col, int n);
+void handleFloatErrors(double arr[][ARR_SIZE], int n);
+void swapArrayElement(double arr[][ARR_SIZE], int firstRow, int secondRow, int column);
 
 
 /******************************************************/
 
 
 //main functions
-void doCramerMethod(double arr[][200], int n, double rootArr[]) {
-	double cloneArray[200][200];
+void doCramerMethod(double arr[][ARR_SIZE], int n, double rootArr[]) {
+	double cloneArray[ARR_SIZE][ARR_SIZE];
 	permutateTriangle(n, arr, cloneArray);
 
 	cout << "Sau khi biến đổi ma trận về ma trận tam giác: " << endl;
@@ -45,21 +49,18 @@ void doCramerMethod(double arr[][200], int n, double rootArr[]) {
 }
 
 
-void doGaussJordanMethod(double arr[][200], int n, double rootArr[]){
-	double cloneArray[200][200];
+void doGaussJordanMethod(double arr[][ARR_SIZE], int n, double rootArr[]){
+	double cloneArray[ARR_SIZE][ARR_SIZE];
 	cout << "Sau khi biến đổi ma trận bằng phương pháp khử Gauss-Jordan: " << endl;
 
 	eliminateGaussJordan(n, arr, cloneArray);
 	findRootGaussJordan(rootArr, n, cloneArray);
 }
 
-//main functions
-
-
 
 //Utilities function
 
-void eliminateGaussJordan(int n, double arr[][200], double cloneArray[][200]) {
+void eliminateGaussJordan(int n, double arr[][ARR_SIZE], double cloneArray[][ARR_SIZE]) {
 	copyArray(arr, cloneArray, n);
 
 	for (int i = 0; i < n; i++) {
@@ -93,7 +94,7 @@ void eliminateGaussJordan(int n, double arr[][200], double cloneArray[][200]) {
 }
 
 
-void permutateTriangle(int n, double arr[][200], double cloneArray[][200]) {
+void permutateTriangle(int n, double arr[][ARR_SIZE], double cloneArray[][ARR_SIZE]) {
 	copyArray(arr, cloneArray, n);
 
 	for (int i = 0; i < n - 1; i++) {
@@ -123,7 +124,7 @@ void permutateTriangle(int n, double arr[][200], double cloneArray[][200]) {
 }
 
 
-void findRootGaussJordan(double rootArr[], int n, double arr[][200]) {
+void findRootGaussJordan(double rootArr[], int n, double arr[][ARR_SIZE]) {
 	for (int i = 0; i < n; i++) {
     rootArr[i] = arr[i][n] / arr[i][i];
   }
@@ -146,7 +147,7 @@ int checkRoot(double rootArr[], int n) {
 }
 
 
-double calcDetCramer(double arr[][200], int n) {
+double calcDetCramer(double arr[][ARR_SIZE], int n) {
 	double det = 1;
 
 	for (int i = 0; i < n; i++) {
@@ -157,7 +158,7 @@ double calcDetCramer(double arr[][200], int n) {
 }
 
 
-void checkDetCramer(double rootArr[], double det, int n, double arr[][200]) {
+void checkDetCramer(double rootArr[], double det, int n, double arr[][ARR_SIZE]) {
 	if (det == 0) {
 		for (int i = 1; i < n; i++) {
 			if (arr[i][n] != arr[i - 1][n]) {
@@ -175,9 +176,9 @@ void checkDetCramer(double rootArr[], double det, int n, double arr[][200]) {
 }
 
 
-void calcRootCramer(double rootArr[], double arr[][200], double det, int n) {
+void calcRootCramer(double rootArr[], double arr[][ARR_SIZE], double det, int n) {
 	for (int i = 0; i < n; i++) {
-		double tempArr[200][200];
+		double tempArr[ARR_SIZE][ARR_SIZE];
 
 		copyArray(arr, tempArr, n);
 
@@ -201,7 +202,7 @@ void calcRootCramer(double rootArr[], double arr[][200], double det, int n) {
 }
 
 
-void copyArray(double arr[][200], double cloneArray[][200], int n) {
+void copyArray(double arr[][ARR_SIZE], double cloneArray[][ARR_SIZE], int n) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n + 1; j++) {
 			cloneArray[i][j] = arr[i][j];
@@ -210,7 +211,7 @@ void copyArray(double arr[][200], double cloneArray[][200], int n) {
 }
 
 
-void swapColumn(double arr[][200], int col, int n) {
+void swapColumn(double arr[][ARR_SIZE], int col, int n) {
 	for (int i = 0; i < n; i++) {
 			double temp = arr[i][col];
 			arr[i][col] = arr[i][n];
@@ -219,7 +220,7 @@ void swapColumn(double arr[][200], int col, int n) {
 }
 
 
-void handleFloatErrors(double arr[][200], int n) {
+void handleFloatErrors(double arr[][ARR_SIZE], int n) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n + 1; j++) {
 			if (abs(arr[i][j]) < 0.001) arr[i][j] = 0;
@@ -227,7 +228,7 @@ void handleFloatErrors(double arr[][200], int n) {
 	}
 }
 
-void swapArrayElement(double arr[][200], int firstRow, int secondRow, int column) {
+void swapArrayElement(double arr[][ARR_SIZE], int firstRow, int secondRow, int column) {
 	double temp = arr[firstRow][column];
 	arr[firstRow][column] = arr[secondRow][column];
 	arr[secondRow][column] = temp;
