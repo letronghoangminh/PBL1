@@ -233,6 +233,3 @@ void swapArrayElement(double arr[][ARR_SIZE], int firstRow, int secondRow, int c
 	arr[firstRow][column] = arr[secondRow][column];
 	arr[secondRow][column] = temp;
 }
-
-
-//Utilities functions

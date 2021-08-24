@@ -41,7 +41,7 @@ int main() {
 		
 		// Method is chosen.
 		// Input contains of numberOfUnknowns and coefficients
-    // If input by file return inputSuccess = 0 khi when failing to open file 
+    // If input by file return inputSuccess = 0 when failing to open file 
 		inputMenu(factorArr, &numberOfUnknowns, &inputSuccess);
 
     // If failed to open file, end session
